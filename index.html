@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts about Matrices</title>
+    <style>
+        body {
+            background-color: #e0f7e0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2e7d32;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2e7d32;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .fact-display.visible {
+            opacity: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Facts about Matrices</h1>
+        <button id="showFactBtn">Show Fun Fact</button>
+        <div id="factDisplay" class="fact-display hidden"></div>
+    </div>
+    <script>
+        const funFacts = [
+            "The term 'matrix' comes from the Latin word 'matrix', meaning 'womb' or 'source'.",
+            "Matrices are used in computer graphics to perform transformations such as rotation, scaling, and translation.",
+            "The determinant of a matrix can be used to determine if a system of linear equations has a unique solution.",
+            "In linear algebra, a square matrix is called 'singular' if its determinant is zero.",
+            "Matrices can represent graphs, where the elements indicate the presence or absence of edges between vertices.",
+            "The identity matrix acts as the multiplicative identity in matrix multiplication, similar to the number 1 in regular multiplication.",
+            "Matrices are widely used in machine learning algorithms, particularly in neural networks.",
+            "The concept of eigenvalues and eigenvectors is fundamental in many applications, including stability analysis and quantum mechanics.",
+            "Matrix multiplication is not commutative, meaning that A * B does not necessarily equal B * A.",
+            "The largest known matrix in terms of size was created for a specific mathematical problem and contained over 1 billion entries."
+        ];
+
+        document.getElementById('showFactBtn').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const fact = funFacts[randomIndex];
+            const factDisplay = document.getElementById('factDisplay');
+
+            factDisplay.textContent = fact;
+            factDisplay.classList.remove('hidden');
+            factDisplay.classList.add('visible');
+
+            // Hide the fact after a few seconds
+            setTimeout(() => {
+                factDisplay.classList.remove('visible');
+                factDisplay.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
